@@ -28,6 +28,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="massh">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -41,6 +44,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="coord">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>540</x>

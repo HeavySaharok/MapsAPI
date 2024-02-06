@@ -17,6 +17,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from get_image import *
 
 
 class Ui_MainWindow(object):
@@ -31,6 +32,7 @@ class Ui_MainWindow(object):
         self.massh = QtWidgets.QLineEdit(self.centralwidget)
         self.massh.setGeometry(QtCore.QRect(70, 380, 191, 41))
         self.massh.setObjectName("massh")
+
         self.coord = QtWidgets.QLineEdit(self.centralwidget)
         self.coord.setGeometry(QtCore.QRect(540, 380, 171, 41))
         self.coord.setObjectName("coord")
@@ -46,8 +48,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
 
-        # !!!!! прием картинки
-        self.pixmap = QPixmap('map.png')
+
 
         MainWindow.setStatusBar(self.statusbar)
 
@@ -60,18 +61,22 @@ class Ui_MainWindow(object):
         self.save.setText(_translate("MainWindow", "сохранить"))
         self.massh.setText(_translate("MainWindow", "масштаб"))
         self.coord.setText(_translate("MainWindow", "координаты"))
+        self.massh.setText('0.005,0.005')
+        self.coord.setText('66,66')
 
 
 class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.save.clicked.connect(self.run)
+        self.save.clicked.connect(self.show_map)
 
     # отображает картинку
-    def run(self):
-        # self.label.setText("OK")
-        self.label.setPixmap(self.pixmap)
+    def show_map(self):
+        ll, spn = '66,66', '0.005,0.005'
+        get_image(ll, spn)
+
+        self.label.setPixmap(QPixmap('map.png'))
 
     def coord_mas(self):
         '''

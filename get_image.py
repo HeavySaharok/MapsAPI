@@ -1,4 +1,5 @@
 import requests
+
 from PIL import Image
 from io import BytesIO
 
@@ -13,4 +14,3 @@ def get_image(ll, spn):
     im = Image.open(BytesIO(requests.get(address, par).content))
     im.save('map.png')
     im.close()
-
