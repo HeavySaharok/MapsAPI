@@ -47,8 +47,6 @@ class Example(QWidget):
             self.coords = (self.coords[0], self.coords[1] + self.coords_step)
         if event.key() == Qt.Key_Up:
             self.coords = (self.coords[0], self.coords[1] + self.coords_step)
-        self.coordsLable.setText(f"""Размер: {self.size}
-Координаты: {self.coords}""")
 
 
 if __name__ == '__main__':
