@@ -22,7 +22,7 @@ from get_image import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("ПУНКТ 3")
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -32,10 +32,12 @@ class Ui_MainWindow(object):
         self.massh = QtWidgets.QLineEdit(self.centralwidget)
         self.massh.setGeometry(QtCore.QRect(70, 380, 191, 41))
         self.massh.setObjectName("massh")
+        self.massh.setEnabled(False)
 
         self.coord = QtWidgets.QLineEdit(self.centralwidget)
         self.coord.setGeometry(QtCore.QRect(540, 380, 171, 41))
         self.coord.setObjectName("coord")
+        self.coord.setEnabled(False)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(100, 20, 561, 331))
         self.label.setText("")

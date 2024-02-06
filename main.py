@@ -13,6 +13,7 @@ limit_z = (21, 2)  # [0] - максимум, [1] - минимум
 default_z = 10
 size_step = 1
 # Координаты:
+limit_coords = (80, -80)  # [0] - максимум, [1] - минимум
 default_coords = (37, 55)
 coords_step = 1
 
@@ -28,6 +29,7 @@ class MapsAPI(QMainWindow, Ui_MainWindow):
         self.size_step = size_step
         self.coords = default_coords
         self.coords_step = coords_step
+        self.limit_coords = limit_coords
 
     # отображает картинку
     def show_map(self):
@@ -43,7 +45,7 @@ class MapsAPI(QMainWindow, Ui_MainWindow):
         return self.coord.text(), self.massh.text()
 
     def get_ll(self):
-        ll = f'{self.coords[0]},{self.coords[1]}'
+        ll = f'{self.coords[0]%180},{self.coords[1]%180}'
         return ll
 
     def get_z(self):
@@ -61,9 +63,11 @@ class MapsAPI(QMainWindow, Ui_MainWindow):
         if event.key() == Qt.Key_Right:
             self.coords = (self.coords[0] + self.coords_step, self.coords[1])
         if event.key() == Qt.Key_Down:
-            self.coords = (self.coords[0], self.coords[1] + self.coords_step)
+            self.coords = (self.coords[0], self.coords[1] - self.coords_step) \
+                if self.coords[1] > self.limit_coords[1] else self.coords
         if event.key() == Qt.Key_Up:
-            self.coords = (self.coords[0], self.coords[1] + self.coords_step)
+            self.coords = (self.coords[0], self.coords[1] + self.coords_step) \
+                if self.coords[1] < self.limit_coords[0] else self.coords
 
         self.show_map()
 
